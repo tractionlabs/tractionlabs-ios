@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'TractionLabs_Example', :exclusive => true do
+  pod "TractionLabs", :path => "../"
+end
+
+target 'TractionLabs_Tests', :exclusive => true do
+  pod "TractionLabs", :path => "../"
+
+  pod 'Specta'
+  pod 'Expecta'
+end
