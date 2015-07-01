@@ -22,7 +22,7 @@ pod "TractionLabs"
 
 ## Author
 
-tobins, tobins@gmail.com
+tobins, tobin@tractionlabs.com
 
 ## License
 
