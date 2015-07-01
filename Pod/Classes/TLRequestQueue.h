@@ -8,15 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@class TLServerRequest;
+@class TLRequest;
 
 @interface TLRequestQueue : NSObject
 
 + (instancetype)sharedQueue;
 
-- (void)enqueue:(TLServerRequest*)request;
-- (TLServerRequest*)dequeue;
-- (TLServerRequest*)peek;
+- (void)enqueue:(TLRequest*)request;
+- (TLRequest*)dequeue;
+- (TLRequest*)peek;
 - (NSInteger)size;
+
+- (void)process;
 
 @end

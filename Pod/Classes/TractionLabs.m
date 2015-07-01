@@ -8,7 +8,7 @@
 
 #import "TractionLabs.h"
 #import "TLConfiguration.h"
-
+#import "TLRequestQueue+TLOpenRequest.h"
 @implementation TractionLabs
 
 + (instancetype)sharedInstance {
@@ -28,16 +28,17 @@
         return NO;
     }
     
+    // check for click information
+    
+    // queue open request
+    TLRequestQueue* queue = [TLRequestQueue sharedQueue];
+    [queue enqueueOpenRequest];
     
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return YES;
-}
-
-- (void)configureWithApplicationId:(NSString*)applicationId {
-    
 }
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "TLRequestQueue.h"
-#import "TLServerRequest.h"
+#import "TLRequest.h"
+#import "TLError.h"
 
 @interface TLRequestQueue()
 
@@ -36,7 +37,7 @@
     return self;
 }
 
-- (void)enqueue:(TLServerRequest*)request {
+- (void)enqueue:(TLRequest*)request {
     @synchronized(self.queue) {
         if( request ) {
             [self.queue addObject:request];
@@ -45,8 +46,8 @@
 }
 
 
-- (TLServerRequest*)dequeue {
-    TLServerRequest* request = nil;
+- (TLRequest*)dequeue {
+    TLRequest* request = nil;
     
     @synchronized(self.queue) {
         if( self.queue.count ) {
@@ -58,8 +59,8 @@
     return request;
 }
 
-- (TLServerRequest*)peek {
-    TLServerRequest* request = nil;
+- (TLRequest*)peek {
+    TLRequest* request = nil;
 
     @synchronized(self.queue) {
         if( self.queue.count ) {
@@ -75,9 +76,29 @@
 }
 
 - (void)process {
-    TLServerRequest* request = [self peek];
+    TLRequest* request = [self peek];
     if( request ) {
+
+        __weak typeof(self) weakSelf = self;
+        TLRequestCompletion completion = ^(id responseObject, NSError* error) {
+            if( error ) {
+                if( [TLErrorDomain isEqualToString:error.domain] ) {
+                    id responseError = error.userInfo[TRACTIONLABS_RESPONSE_ERROR_KEY];
+                    NSString* message = responseError?responseError[TRACTIONLABS_RESPONSE_ERROR_MESSAGE_KEY]:nil;
+                    if( message ) {
+                        NSLog(@"[TractionLabs Error] %@(%li) : %@", TLErrorCode_toString[error.code], (long)error.code, message );
+                    } else {
+                        NSLog(@"[TractionLabs Error] %@(%li)", TLErrorCode_toString[error.code], (long)error.code );
+                    }
+                }
+                return;
+            }
+            
+            [weakSelf dequeue];
+            [weakSelf process];
+        };
         
+        [request sendWithCompletion:completion];
     }
 }
 

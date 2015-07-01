@@ -10,6 +10,12 @@
 
 NSString * const TLErrorDomain = @"com.tractionlabs";
 
+NSString * const TLErrorCode_toString[] = {
+    [TLSendWithCompletionNotImplementedError] = @"TLSendWithCompletionNotImplementedError",
+    [TLBadRequestError] = @"TLBadRequestError",
+    [TLServerError] = @"TLServerError"
+};
+
 @implementation TLError
 
 @end
