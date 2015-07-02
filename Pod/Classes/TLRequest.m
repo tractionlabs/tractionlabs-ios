@@ -12,8 +12,19 @@
 
 NSString * const TRACTIONLABS_RESPONSE_ERROR_KEY = @"tractionLabsErrorData";
 NSString * const TRACTIONLABS_RESPONSE_ERROR_MESSAGE_KEY = @"message";
+
 NSString * const TRACTIONLABS_EVENT_DEVICE_UUID_KEY = @"deviceUUID";
+NSString * const TRACTIONLABS_EVENT_VENDOR_UUID_KEY = @"vendorUUID";
 NSString * const TRACTIONLABS_EVENT_PLATFORM_KEY = @"platform";
+NSString * const TRACTIONLABS_EVENT_SCREEN_WIDTH_KEY = @"screenWidth";
+NSString * const TRACTIONLABS_EVENT_SCREEN_HEIGHT_KEY = @"screenHeight";
+NSString * const TRACTIONLABS_EVENT_COLOR_DEPTH_KEY = @"colorDepth";
+NSString * const TRACTIONLABS_EVENT_OS_VERSION_KEY = @"osVersion";
+NSString * const TRACTIONLABS_EVENT_APP_VERSION_KEY = @"appVersion";
+NSString * const TRACTIONLABS_EVENT_BUNDLE_ID_KEY = @"bundleId";
+NSString * const TRACTIONLABS_EVENT_CARRIER_KEY = @"carrier";
+NSString * const TRACTIONLABS_EVENT_LANGUAGE_KEY = @"language";
+NSString * const TRACTIONLABS_EVENT_TIME_ZONE_OFFSET_KEY = @"timeZoneOffset";
 
 NSTimeInterval const TRACTIONLABS_REQUEST_TIMEOUT = 60.0;
 

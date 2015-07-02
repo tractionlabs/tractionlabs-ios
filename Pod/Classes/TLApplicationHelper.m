@@ -35,9 +35,17 @@ NSString * const TRACTIONLABS_DEVICE_UUID_KEY = @"tractionlabs_device_uuid";
     return [[UIDevice currentDevice] name];
 }
 
++ (NSString *)getLanguage {
+    return [[NSLocale preferredLanguages] objectAtIndex:0];
+}
+
++ (NSInteger)getTimeZoneOffset {
+    return -[[NSTimeZone localTimeZone] secondsFromGMT]/60;
+}
+
 + (NSString *)getOS {
     UIDevice *device = [UIDevice currentDevice];
-    return [device systemName];
+    return [[device systemName] isEqualToString:@"iPhone OS"]?@"iOS":[device systemName];
 }
 
 + (NSString *)getOSVersion {
@@ -53,6 +61,10 @@ NSString * const TRACTIONLABS_DEVICE_UUID_KEY = @"tractionlabs_device_uuid";
 + (NSInteger)getScreenHeight {
     UIScreen *mainScreen = [UIScreen mainScreen];
     return (NSInteger)CGRectGetHeight(mainScreen.bounds);
+}
+
++ (NSInteger)getColorDepth {
+    return 32;
 }
 
 + (CGFloat)getScreenScale {

@@ -13,10 +13,13 @@
 + (NSString *)getDeviceArchitecture;
 + (NSString *)getDeviceModel;
 + (NSString *)getDeviceName;
++ (NSString *)getLanguage;
++ (NSInteger)getTimeZoneOffset;
 + (NSString*)getOS;
 + (NSString*)getOSVersion;
 + (NSInteger)getScreenWidth;
 + (NSInteger)getScreenHeight;
++ (NSInteger)getColorDepth;
 + (CGFloat)getScreenScale;
 + (NSString *)getVendorUUID;
 + (NSString *)getDeviceUUID;
