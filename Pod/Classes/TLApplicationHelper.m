@@ -8,6 +8,8 @@
 
 #import "TLApplicationHelper.h"
 #include <sys/utsname.h>
+#include <sys/types.h>
+#include <sys/sysctl.h>
 
 NSString * const TRACTIONLABS_DEVICE_UUID_KEY = @"tractionlabs_device_uuid";
 
@@ -35,12 +37,23 @@ NSString * const TRACTIONLABS_DEVICE_UUID_KEY = @"tractionlabs_device_uuid";
     return [[UIDevice currentDevice] name];
 }
 
++ (NSString *)getHardwareIdentifier {
+    size_t size;
+    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    char *machine = malloc(size);
+    sysctlbyname("hw.machine", machine, &size, NULL, 0);
+    NSString *platform = [NSString stringWithUTF8String:machine];
+    free(machine);
+    return platform;
+}
+
 + (NSString *)getLanguage {
     return [[NSLocale preferredLanguages] objectAtIndex:0];
 }
 
 + (NSInteger)getTimeZoneOffset {
-    return -[[NSTimeZone localTimeZone] secondsFromGMT]/60;
+
+    return ABS([[NSTimeZone localTimeZone] secondsFromGMT]/60);
 }
 
 + (NSString *)getOS {

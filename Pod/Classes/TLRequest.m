@@ -16,6 +16,8 @@ NSString * const TRACTIONLABS_RESPONSE_ERROR_MESSAGE_KEY = @"message";
 NSString * const TRACTIONLABS_EVENT_DEVICE_UUID_KEY = @"deviceUUID";
 NSString * const TRACTIONLABS_EVENT_VENDOR_UUID_KEY = @"vendorUUID";
 NSString * const TRACTIONLABS_EVENT_PLATFORM_KEY = @"platform";
+NSString * const TRACTIONLABS_EVENT_HARDWARE_IDENTIFIER_KEY = @"hardwareIdentifier";
+
 NSString * const TRACTIONLABS_EVENT_SCREEN_WIDTH_KEY = @"screenWidth";
 NSString * const TRACTIONLABS_EVENT_SCREEN_HEIGHT_KEY = @"screenHeight";
 NSString * const TRACTIONLABS_EVENT_COLOR_DEPTH_KEY = @"colorDepth";

@@ -13,6 +13,7 @@
 + (NSString *)getDeviceArchitecture;
 + (NSString *)getDeviceModel;
 + (NSString *)getDeviceName;
++ (NSString *)getHardwareIdentifier;
 + (NSString *)getLanguage;
 + (NSInteger)getTimeZoneOffset;
 + (NSString*)getOS;

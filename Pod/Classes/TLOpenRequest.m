@@ -13,8 +13,9 @@
 @implementation TLOpenRequest
 
 - (instancetype)init {
-    self = [super initWithAction:@"open"];
+    self = [super initWithAction:@"event/open"];
     if( self ) {
+        NSLog(@"%@", [TLApplicationHelper getHardwareIdentifier]);
     }
     return self;
 }
@@ -23,6 +24,8 @@
     NSMutableDictionary* json = [NSMutableDictionary new];
     [json safeSetObject:[TLApplicationHelper getDeviceUUID] forKey:TRACTIONLABS_EVENT_DEVICE_UUID_KEY];
     [json safeSetObject:[TLApplicationHelper getVendorUUID] forKey:TRACTIONLABS_EVENT_VENDOR_UUID_KEY];
+    [json safeSetObject:[TLApplicationHelper getHardwareIdentifier] forKey:TRACTIONLABS_EVENT_HARDWARE_IDENTIFIER_KEY];
+
     [json safeSetObject:[TLApplicationHelper getOS] forKey:TRACTIONLABS_EVENT_PLATFORM_KEY];
     [json safeSetObject:[TLApplicationHelper getOSVersion] forKey:TRACTIONLABS_EVENT_OS_VERSION_KEY];
     
