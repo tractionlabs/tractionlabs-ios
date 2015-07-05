@@ -15,7 +15,6 @@
 - (instancetype)init {
     self = [super initWithAction:@"event/open"];
     if( self ) {
-        NSLog(@"%@", [TLApplicationHelper getHardwareIdentifier]);
     }
     return self;
 }
